@@ -15,9 +15,13 @@ for i in range(0, 46):
    #print(nomeArquivos[i])
    planilhaSetor = pd.read_excel(caminhopasta + nomeArquivos[i])
    colecaoPlanilhas.append(planilhaSetor)
-    
 
-print(colecaoPlanilhas[0]['Aparelho gela?'])
+
+regex_padrao = r'Aparelho gela\??|aparelho gela\?|Aparelho gela|aparelho gela'
+
+    
+for i in range(0,1):
+   print(colecaoPlanilhas[i]['Aparelho gela?'])
 
 
 
