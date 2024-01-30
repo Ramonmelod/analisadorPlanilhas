@@ -1,29 +1,48 @@
 import pandas as pd
-#import PyPDF2
 from openpyxl import load_workbook  # load_workbook permite abrir e carregar um arquivo Excel existente para manipulação.
 import re
 import os  # biblioteca usada para utilização do metodo de listagem do nome dos arquivos
 
-caminhopasta = "C:\\Users\\ramon\\Desktop\\levantamento\\planilhas\\"  # Substitua pelo caminho da sua pasta
-
+caminhopasta = "C:\\Users\\ramon\\OneDrive\\Documentos\\GitHub\\analisadorPlanilhas\\planilhas\\"  # necessário implementar container para que o caminho da pasta se mantenha o mesmo idependente da máquina que o código roda
+#caminhopasta = "C:\\Users\\ramon\\Desktop\\levantamento\\planilhas\\" # pcTrabalho
 colecaoPlanilhas =[]
 
 nomeArquivos = os.listdir(caminhopasta) # Lista todos os arquivos na pasta e armazena em uma array
 
+# print(nomeArquivos[16])
+# planilha = pd.read_excel(caminhopasta + nomeArquivos[16], sheet_name=0)
+# print("Nomes das colunas:", planilha.columns)
+
+
+#print(planilha["Aparelho gela?"])
+
 
 for i in range(0, 46):
+   #print(i)
    #print(nomeArquivos[i])
-   planilhaSetor = pd.read_excel(caminhopasta + nomeArquivos[i])
+   planilhaSetor = pd.read_excel(caminhopasta + nomeArquivos[i], sheet_name=0)
    colecaoPlanilhas.append(planilhaSetor)
 
+regex_padrao = r'Aparelho gela\??|aparelho gela\?|Aparelho gelsa|aparelho gela'
 
-regex_padrao = r'Aparelho gela\??|aparelho gela\?|Aparelho gela|aparelho gela'
-
-    
-for i in range(0,1):
+print('-------------início for---------------')    
+for i in range(0,46): 
+   print(nomeArquivos[i])
    print(colecaoPlanilhas[i]['Aparelho gela?'])
+   print('-------------fim planilha---------------')
+print('-------------Fim programa---------------')    
 
 
+
+
+
+
+
+
+# string = 'aparelho gela?'
+# pattern = re.compile('.parelho .ela.')
+# x = re.search(pattern,string)
+# print(x)
 
 #nomeArquivos = [""]
 
@@ -63,4 +82,3 @@ for i in range(0,1):
 
 
 #print(planilha01)
-
