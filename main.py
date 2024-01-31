@@ -6,79 +6,39 @@ import os  # biblioteca usada para utilização do metodo de listagem do nome do
 caminhopasta = "C:\\Users\\ramon\\OneDrive\\Documentos\\GitHub\\analisadorPlanilhas\\planilhas\\"  # necessário implementar container para que o caminho da pasta se mantenha o mesmo idependente da máquina que o código roda
 #caminhopasta = "C:\\Users\\ramon\\Desktop\\levantamento\\planilhas\\" # pcTrabalho
 colecaoPlanilhas =[]
+colecaoNumeroAbas = []
 
 nomeArquivos = os.listdir(caminhopasta) # Lista todos os arquivos na pasta e armazena em uma array
 
-# print(nomeArquivos[16])
-# planilha = pd.read_excel(caminhopasta + nomeArquivos[16], sheet_name=0)
-# print("Nomes das colunas:", planilha.columns)
-
-
-#print(planilha["Aparelho gela?"])
 
 
 for i in range(0, 46):
-   #print(i)
-   #print(nomeArquivos[i])
-   planilhaSetor = pd.read_excel(caminhopasta + nomeArquivos[i], sheet_name=0)
-   colecaoPlanilhas.append(planilhaSetor)
+   planilhaSetor = pd.ExcelFile(caminhopasta + nomeArquivos[i])
+   numeroAbasPlanilha = len(planilhaSetor.sheet_names) # recebe o numero de abas da planilha i
+   colecaoNumeroAbas.append(numeroAbasPlanilha)        # guarda o numero de abas da planilha i na posição i do array colecaoNumeroabas 
+   #print(i, " = ----"," .O arquivo: - ",nomeArquivos[i]," possui: ---", colecaoNumeroAbas[i]," abas")
 
-regex_padrao = r'Aparelho gela\??|aparelho gela\?|Aparelho gelsa|aparelho gela'
+   for j in range(0,colecaoNumeroAbas[i]):
+      colecaoPlanilhas.append(planilhaSetor.parse(sheet_name=j))  # como o metodo ExcelFile lê toda a planilha, se faz necessário que se aplique este for para ler todas as abas
+   planilhaSetor.close()                                          # fecha o arquivo apenas quando o for com j termina
 
-print('-------------início for---------------')    
-for i in range(0,46): 
-   print(nomeArquivos[i])
+
+for k in range(0,5):
+
    print(colecaoPlanilhas[i]['Aparelho gela?'])
-   print('-------------fim planilha---------------')
-print('-------------Fim programa---------------')    
+   print("--------fim da planilha")
+
+print("---------------fim do programa-------------")
+   
+#print(colecaoPlanilhas[2]['Aparelho gela?'])
 
 
-
-
-
-
-
-
-# string = 'aparelho gela?'
-# pattern = re.compile('.parelho .ela.')
-# x = re.search(pattern,string)
-# print(x)
-
-#nomeArquivos = [""]
-
-
-# wb = load_workbook('01.xlsx')
-# wb.active
-# abaColegio = wb['colegioaplicacao']
-
-# print(abaColegio)
-
-
-# planilha01 = pd.read_excel("01.xlsx")
-# planilha02 = pd.read_excel("02.xlsx")
-# planilha03 = pd.read_excel("03.xlsx")
-
-
-# contagem_01 = (planilha01['Aparelho gela?'] == 'Não').sum()
-# contagem_02 = (planilha02['Aparelho gela?'] == 'não').sum()
-# contagem_03 = (planilha03['Aparelho gela?'] == 'não').sum()
-
-
-# print(contagem_01)
-
-# print(f'Planilha 01 - Aparelho Gela: {contagem_01} vezes')
-# print(f'Planilha 02 - Aparelho Gela: {contagem_02} vezes')
-# print(f'Planilha 03 - Aparelho Gela: {contagem_03} vezes')
-
-
-# linha = planilha01['Aparelho gela?']
-# print(linha[1])
-
-
-
-
-
-
-
-
-#print(planilha01)
+#    print(colecaoPlanilhas[0]['Aparelho gela?'])
+# print("--------fim da planilha")
+# print(colecaoPlanilhas[1]['Aparelho gela?'])
+# print("--------fim da planilha")
+# print(colecaoPlanilhas[2]['Aparelho gela?'])
+# print("--------fim da planilha")
+# print(colecaoPlanilhas[3]['Aparelho gela?'])
+# print("--------fim da planilha")
+# print(colecaoPlanilhas[4]['Aparelho gela?'])
