@@ -12,7 +12,7 @@ nomeArquivos = os.listdir(caminhopasta) # Lista todos os arquivos na pasta e arm
 
 
 
-for i in range(0, 46):
+for i in range(0, 45):
    planilhaSetor = pd.ExcelFile(caminhopasta + nomeArquivos[i])
    numeroAbasPlanilha = len(planilhaSetor.sheet_names) # recebe o numero de abas da planilha i
    colecaoNumeroAbas.append(numeroAbasPlanilha)        # guarda o numero de abas da planilha i na posição i do array colecaoNumeroabas 

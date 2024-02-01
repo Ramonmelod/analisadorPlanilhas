@@ -1,2 +1,1 @@
-
-# linha = 0
+#print(numerolinhasColuna[1])
