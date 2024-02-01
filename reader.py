@@ -23,12 +23,16 @@ for i in range(0, 46):
    planilhaSetor.close()                                          # fecha o arquivo apenas quando o for com j termina
 
 
-for k in range(0,5):
+print("---------------fim do programa reader-------------")
 
-   print(colecaoPlanilhas[i]['Aparelho gela?'])
-   print("--------fim da planilha")
 
-print("---------------fim do programa-------------")
+
+
+# for k in range(0,46):                                       # imprime todas as linhas de todas as planilhas com colulas Aparelho gela?
+
+#    print(colecaoPlanilhas[i]['Aparelho gela?'])
+#    print("--------fim da planilha")
+
    
 #print(colecaoPlanilhas[2]['Aparelho gela?'])
 
