@@ -4,7 +4,7 @@ import re
 import os  # biblioteca usada para utilização do metodo de listagem do nome dos arquivos
 
 caminhopasta = "C:\\Users\\ramon\\OneDrive\\Documentos\\GitHub\\analisadorPlanilhas\\planilhas\\"  # necessário implementar container para que o caminho da pasta se mantenha o mesmo idependente da máquina que o código roda
-#caminhopasta = "C:\\Users\\ramon\\Desktop\\levantamento\\planilhas\\" # pcTrabalho
+#caminhopasta = "C:\\Users\\ramon\\Documents\\GitHub\\analisadorPlanilhas\\planilhas\\" # pcTrabalho
 colecaoPlanilhas =[]
 
 nomeArquivos = os.listdir(caminhopasta) # Lista todos os arquivos na pasta e armazena em uma array
@@ -25,12 +25,41 @@ for i in range(0, 46):
 
 regex_padrao = r'Aparelho gela\??|aparelho gela\?|Aparelho gelsa|aparelho gela'
 
+
+
+planilhaInicial = colecaoPlanilhas[0]
+
 print('-------------início for---------------')    
-for i in range(0,46): 
-   print(nomeArquivos[i])
-   print(colecaoPlanilhas[i]['Aparelho gela?'])
+for i in range(1,10): 
+   print(nomeArquivos[i - 1],"i:  " , i - 1)
+   #print(colecaoPlanilhas[i]['Aparelho gela?'])
+   #print(colecaoPlanilhas[i].columns)
+   print("planilha: ", nomeArquivos[i], "  +  ", nomeArquivos[i-1])
+   planilhaInicial = pd.concat( [planilhaInicial,colecaoPlanilhas[i]] )  
+
+   # if colecaoPlanilhas[i].columns.equals(colecaoPlanilhas[i-1].columns):
+   #    print("planilha: ", nomeArquivos[i], "  +  ", nomeArquivos[i-1])
+   #    planilhaInicial = pd.concat( [planilhaInicial,colecaoPlanilhas[i]] )  
+      
+
+      
+
    print('-------------fim planilha---------------')
-print('-------------Fim programa---------------')    
+
+planilhaInicial.to_excel("C:\\Users\\ramon\\OneDrive\\Documentos\GitHub\\analisadorPlanilhas\\planilha_final.xlsx", index=True)
+
+print('-------------Fim programa---------------')
+
+
+
+
+
+# print('-------------início for---------------')    
+# for i in range(0,46): 
+#    print(nomeArquivos[i])
+#    print(colecaoPlanilhas[i]['Aparelho gela?'])
+#    print('-------------fim planilha---------------')
+# print('-------------Fim programa---------------')    
 
 
 
